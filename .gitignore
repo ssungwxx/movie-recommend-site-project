@@ -1,0 +1,9 @@
+# Editor directories and files
+.idea
+.vscode
+
+# Backend
+backend/backend/__pycache__
+backend/api/__pycache__
+backend/db.sqlite3
+backend/api/migrations
