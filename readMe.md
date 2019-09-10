@@ -60,3 +60,7 @@ python parse_data.py
 "버그 : SearchPage 검색 누락 버그 수정"
 "문서 : readMe 파일 수정"
 ```
+
+### Clustering 공부
+
+현재 진행중
