@@ -203,3 +203,11 @@ sudo supervisorctl status backend
 ```
 sudo supervisorctl reload
 ```
+
+### 참고사이트
+
+http://rahmonov.me/posts/run-a-django-app-with-nginx-gunicorn-and-supervisor/
+
+https://victorydntmd.tistory.com/257
+
+https://gunicorn.org/#deployment
