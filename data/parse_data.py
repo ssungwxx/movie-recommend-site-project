@@ -3,7 +3,7 @@ import requests
 import json
 from datetime import timezone, timedelta, datetime
 
-API_URL = 'http://localhost:8000/api/'
+API_URL = 'http://52.79.111.26/api/'
 headers = {'content-type': 'application/json'}
 
 
@@ -48,8 +48,8 @@ def create_users(num_users):
             'occupation': occupation
         })
 
-        if len(request_data['profiles']) >= num_users:
-            break
+        # if len(request_data['profiles']) >= num_users:
+        #     break
     print("user 넣는중")
     response = requests.post(API_URL + 'auth/signup-many/',
                              data=json.dumps(request_data),
@@ -104,7 +104,7 @@ def create_ratings(num_users):
 
 
 if __name__ == '__main__':
-    num_users = 15
+    num_users = 200000
     create_movies()
     create_users(num_users)
     create_ratings(num_users)
