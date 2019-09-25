@@ -36,9 +36,9 @@ python parse_data.py
 
 ### Branch 설명
 
--   master : 최종 배포 시 업로드
--   release : 릴리즈 파일 배포
--   develope : 개발테스트 후 확인 된 코드 업로드
+-   master : 최종 완료 시 업로드
+-   release : 테스트완료 된 코드 배포
+-   develope : 테스트용 코드 배포
 -   기타 : 각 기능별 테스트 및 작업용
 
 배포 순서 : 기타 브런치 작업 -> develope 브런치로 merge 후 테스트 사이트에서 확인 및 수정 -> release 브랜치에 merge -> 2주 스프린트 완료 후 master 브랜치로 push
@@ -67,6 +67,6 @@ python parse_data.py
 
 ### 역활 담당
 
--   기획 담당 : 김성우
--   QA 담당 : 임성우, 지창규
+-   기획 담당 : 지창규
+-   QA 담당 : 임성우, 김성우
 -   코드리뷰 담당 : 신승민
