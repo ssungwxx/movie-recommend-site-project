@@ -31,3 +31,7 @@ sudo apt-get install jenkins
 5. Gitlab Integrations로 이동하여 URL과 Token 붙여넣기 후 빌드 유발을 설정할 체크박스 클릭
 6. Push Event로 설정하고 브런치 이름을 적으면 특정 브런치 푸쉬 이벤트 발생시 실행 됨
 7. 저장 후 테스트 버튼으로 Push Event 클릭 시 Jenkins 프로젝트가 작동하면 성공
+
+### 참고사이트
+
+https://zetawiki.com/wiki/%EC%9A%B0%EB%B6%84%ED%88%AC_Jenkins_%EC%84%A4%EC%B9%98
