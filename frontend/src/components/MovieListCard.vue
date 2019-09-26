@@ -61,9 +61,13 @@
 
 <script>
 import { mapActions } from "vuex";
+<<<<<<< HEAD
 import axios from "axios";
 
 const apiUrl = "/api";
+=======
+import api from "../api";
+>>>>>>> develope
 
 export default {
   props: {
@@ -108,7 +112,7 @@ export default {
   },
   methods: {
     async recommend() {
-      const result = await axios.get(`http://localhost:8000/api/likemovie`, this.id);
+      const result = await api.recommendMovies(this.id);
       this.recommendList = result.recommend_list_title;
     }
   }
