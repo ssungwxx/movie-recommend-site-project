@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     async recommend() {
-      const result = await axios.get(`${apiUrl}/likemovie`, this.id);
+      const result = await recommendMovies(this.id);
       this.recommendList = result.recommend_list_title;
     }
   }
