@@ -1,4 +1,4 @@
-from .models import Profile, Movie, Rating
+from .models import Profile, Movie, Rating, Like_movie
 from rest_framework import serializers
 from django.db.models import Avg
 
@@ -53,3 +53,10 @@ class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = ('id', 'userid', 'movieid', 'rating', 'timestamp')
+
+
+
+class Like_movieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Like_movie
+        fields = ('movieid', 'rank1', 'rank2', 'rank3', 'rank4', 'rank5', 'rank6', 'rank7', 'rank8', 'rank9', 'rank10')

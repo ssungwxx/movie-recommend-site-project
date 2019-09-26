@@ -47,3 +47,17 @@ class Rating(models.Model):
 
     def __str__(self):
         return '%s :%d' % ('rating', self.rating)
+
+
+class Like_movie(models.Model):
+    movieid = models.IntegerField(primary_key=True)
+    rank1 = models.IntegerField(default = 0)
+    rank2 = models.IntegerField(default = 0)
+    rank3 = models.IntegerField(default = 0)
+    rank4 = models.IntegerField(default = 0)
+    rank5 = models.IntegerField(default = 0)
+    rank6 = models.IntegerField(default = 0)
+    rank7 = models.IntegerField(default = 0)
+    rank8 = models.IntegerField(default = 0)
+    rank9 = models.IntegerField(default = 0)
+    rank10 = models.IntegerField(default = 0)

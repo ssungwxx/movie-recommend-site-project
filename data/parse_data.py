@@ -3,7 +3,7 @@ import requests
 import json
 from datetime import timezone, timedelta, datetime
 
-API_URL = 'http://52.79.111.26/api/'
+API_URL = 'http://localhost:8000/api/'
 headers = {'content-type': 'application/json'}
 
 
@@ -104,7 +104,7 @@ def create_ratings(num_users):
 
 
 if __name__ == '__main__':
-    num_users = 200000
+    num_users = 10000
     create_movies()
     create_users(num_users)
     create_ratings(num_users)

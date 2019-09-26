@@ -3,6 +3,7 @@ from api.views import movie_views
 from api.views import auth_views
 from api.views import rating_views
 from api.views import profile_views
+from api.views import like_movie_views
 from api.views import classify_movies_views
 
 urlpatterns = [
@@ -10,6 +11,7 @@ urlpatterns = [
     url('movies/$', movie_views.movies, name='movie_list'),
     url('ratings/$', rating_views.ratings, name='rating_list'),
     url('profiles/$', profile_views.profiles, name='profile_list'),
+    url('likemovie/$', like_movie_views.like_movies, name='like_movie_list'),
     url('classify/$', classify_movies_views.classify_movies,
         name='classify_movies'),
 ]
