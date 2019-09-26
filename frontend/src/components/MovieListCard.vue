@@ -61,6 +61,8 @@
 
 <script>
 import { mapActions } from "vuex";
+import api from "../api";
+
 export default {
   props: {
     id: {
@@ -104,7 +106,7 @@ export default {
   },
   methods: {
     async recommend() {
-      const result = await recommendMovies(this.id);
+      const result = await api.recommendMovies(this.id);
       this.recommendList = result.recommend_list_title;
     }
   }
