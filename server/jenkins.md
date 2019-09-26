@@ -94,3 +94,7 @@ deactivate
 ### 참고사이트
 
 https://zetawiki.com/wiki/%EC%9A%B0%EB%B6%84%ED%88%AC_Jenkins_%EC%84%A4%EC%B9%98
+
+https://docs.pytest.org/
+
+https://tomining.tistory.com/147
