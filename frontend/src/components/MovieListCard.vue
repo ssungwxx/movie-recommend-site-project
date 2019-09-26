@@ -106,11 +106,7 @@ export default {
   },
   methods: {
     async recommend() {
-<<<<<<< HEAD
-      const result = await recommendMovies(this.id);
-=======
       const result = await api.recommendMovies(this.id);
->>>>>>> 6c7fa4fba5d5b1ff0f56ab62f7139d7b9c9f79b0
       this.recommendList = result.recommend_list_title;
     }
   }
