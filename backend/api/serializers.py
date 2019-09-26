@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from .models import Profile, Movie, Rating, Like_movie
 from rest_framework import serializers
 from django.db.models import Avg
@@ -57,6 +58,29 @@ class RatingSerializer(serializers.ModelSerializer):
 
 
 class Like_movieSerializer(serializers.ModelSerializer):
+    recommend_list_id = serializers.SerializerMethodField('get_recommend_list_id')
+    recommend_list_title = serializers.SerializerMethodField('get_recommend_list_title')
+
+
     class Meta:
         model = Like_movie
-        fields = ('movieid', 'rank1', 'rank2', 'rank3', 'rank4', 'rank5', 'rank6', 'rank7', 'rank8', 'rank9', 'rank10')
+        fields = ('movieid', 'recommend_list_id', 'recommend_list_title')
+    
+    def get_recommend_list_id(self, obj):
+        recommend_list_id = (obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5, obj.rank6, obj.rank7, obj.rank8, obj.rank9, obj.rank10)
+
+        return recommend_list_id
+
+    def get_recommend_list_title(self, obj):
+        recommend_list_title = [obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5, obj.rank6, obj.rank7, obj.rank8, obj.rank9, obj.rank10]
+        idx = 0
+
+        for item in recommend_list_title:
+            movie = Movie.objects.all()
+            movie = movie.filter(pk=item)
+            recommend_list_title[idx] = movie[0].title
+            idx = idx + 1
+
+        return recommend_list_title
+        
+        

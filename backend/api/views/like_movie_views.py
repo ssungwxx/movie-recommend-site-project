@@ -7,9 +7,22 @@ from rest_framework.response import Response
 from django.db.models import Avg
 
 
-@api_view(['POST'])
+@api_view(['GET','POST'])
 def like_movies(request):
+    if request.method == 'GET':
+        id = request.GET.get('id', request.GET.get('movieid', None))
+        movies = Like_movie.objects.all()
+        # 해당 id에 대한 추천 movieid를 필터링해서 가져옴
+        if id:
+            movies = movies.filter(pk=id)
     
+        serializer = Like_movieSerializer(movies, many=True)
+
+        print("----------------------")
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+
     if request.method == 'POST':
         like_movies = request.data.get('like_movies', None)
         for item in like_movies:
