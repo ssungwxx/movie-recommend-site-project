@@ -4,10 +4,10 @@ module.exports = {
     devServer: {
         proxy: {
             "/api": {
-                target: "http://52.79.111.26/"
+                target: "http://localhost:8000/"
             },
             "/static/posters": {
-                target: "http://52.79.111.26/"
+                target: "http://localhost:8000"
             }
         }
     }

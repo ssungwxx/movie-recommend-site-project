@@ -83,4 +83,4 @@ class Like_movieSerializer(serializers.ModelSerializer):
 
         return recommend_list_title
         
-        
+         
