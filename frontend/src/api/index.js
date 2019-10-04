@@ -37,5 +37,8 @@ export default {
   },
   classifyingMovies(params) {
     return axios.get(`${apiUrl}/classify/`, { params });
+  },
+  recommendMovies(data) {
+    return axios.get(`${apiUrl}/likemovie/`, data);
   }
 };

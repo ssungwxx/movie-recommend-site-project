@@ -46,7 +46,11 @@
               평점 : {{ rating.toFixed(1) }}
               <br />
               시청수 : {{ viewCnt }}
-              <br />내용이 들어갈 곳입니다.
+              <v-flex v-for="movie in recommendList" :key="movie.id">
+                <v-card max-width="344" class="mx-auto">
+                  <v-card-title class="headline">{{ movie }}</v-card-title>
+                </v-card>
+              </v-flex>
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -57,6 +61,8 @@
 
 <script>
 import { mapActions } from "vuex";
+import api from "../api";
+
 export default {
   props: {
     id: {
@@ -86,12 +92,22 @@ export default {
   },
   data() {
     return {
-      dialog: false
+      dialog: false,
+      recommendList: []
     };
+  },
+  mounted() {
+    this.recommend();
   },
   computed: {
     genresStr: function() {
       return this.genres.join(" / ");
+    }
+  },
+  methods: {
+    async recommend() {
+      const result = await api.recommendMovies(this.id);
+      this.recommendList = result.recommend_list_title;
     }
   }
 };
