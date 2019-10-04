@@ -106,5 +106,5 @@ def create_ratings(num_users):
 if __name__ == '__main__':
     num_users = 15
     create_movies()
-    create_users(num_users)
-    create_ratings(num_users)
+    create_users(2000)
+    create_ratings(5000)
