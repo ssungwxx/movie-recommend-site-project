@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'api',
 
     # cors-header
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
