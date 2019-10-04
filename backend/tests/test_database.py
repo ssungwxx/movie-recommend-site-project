@@ -4,7 +4,7 @@ import pytest
 from django.db import connection
 from django.test.testcases import connections_support_transactions
 
-from api.models import Movie
+from api.models import Item
 
 
 def db_supports_reset_sequences():
@@ -17,17 +17,17 @@ def db_supports_reset_sequences():
 
 def test_noaccess():
     with pytest.raises(pytest.fail.Exception):
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
     with pytest.raises(pytest.fail.Exception):
-        Movie.objects.count()
+        Item.objects.count()
 
 
 @pytest.fixture
 def noaccess():
     with pytest.raises(pytest.fail.Exception):
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
     with pytest.raises(pytest.fail.Exception):
-        Movie.objects.count()
+        Item.objects.count()
 
 
 def test_noaccess_fixture(noaccess):
@@ -40,8 +40,8 @@ def non_zero_sequences_counter(db):
     """Ensure that the db's internal sequence counter is > 1.
     This is used to test the `reset_sequences` feature.
     """
-    item_1 = Movie.objects.create(title="item_1")
-    item_2 = Movie.objects.create(title="item_2")
+    item_1 = Item.objects.create(name="item_1")
+    item_2 = Item.objects.create(name="item_2")
     item_1.delete()
     item_2.delete()
 
@@ -59,11 +59,11 @@ class TestDatabaseFixtures:
             return request.getfixturevalue("db")
 
     def test_access(self, all_dbs):
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
 
     def test_clean_db(self, all_dbs):
         # Relies on the order: test_access created an object
-        assert Movie.objects.count() == 0
+        assert Item.objects.count() == 0
 
     def test_transactions_disabled(self, db):
         if not connections_support_transactions():
@@ -86,25 +86,25 @@ class TestDatabaseFixtures:
     @pytest.fixture
     def mydb(self, all_dbs):
         # This fixture must be able to access the database
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
 
     def test_mydb(self, mydb):
         if not connections_support_transactions():
             pytest.skip("transactions required for this test")
 
         # Check the fixture had access to the db
-        item = Movie.objects.get(title="spam")
+        item = Item.objects.get(name="spam")
         assert item
 
     def test_fixture_clean(self, all_dbs):
         # Relies on the order: test_mydb created an object
         # See https://github.com/pytest-dev/pytest-django/issues/17
-        assert Movie.objects.count() == 0
+        assert Item.objects.count() == 0
 
     @pytest.fixture
     def fin(self, request, all_dbs):
         # This finalizer must be able to access the database
-        request.addfinalizer(lambda: Movie.objects.create(title="spam"))
+        request.addfinalizer(lambda: Item.objects.create(name="spam"))
 
     def test_fin(self, fin):
         # Check finalizer has db access (teardown will fail if not)
@@ -114,15 +114,15 @@ class TestDatabaseFixtures:
 class TestDatabaseFixturesAllOrder:
     @pytest.fixture
     def fixture_with_db(self, db):
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
 
     @pytest.fixture
     def fixture_with_transdb(self, transactional_db):
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
 
     @pytest.fixture
     def fixture_with_reset_sequences(self, django_db_reset_sequences):
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
 
     def test_trans(self, fixture_with_transdb):
         pass
@@ -147,12 +147,12 @@ class TestDatabaseMarker:
 
     @pytest.mark.django_db
     def test_access(self):
-        Movie.objects.create(title="spam")
+        Item.objects.create(name="spam")
 
     @pytest.mark.django_db
     def test_clean_db(self):
         # Relies on the order: test_access created an object.
-        assert Movie.objects.count() == 0
+        assert Item.objects.count() == 0
 
     @pytest.mark.django_db
     def test_transactions_disabled(self):
@@ -179,3 +179,8 @@ class TestDatabaseMarker:
     def test_reset_sequences_disabled(self, request):
         marker = request.node.get_closest_marker("django_db")
         assert not marker.kwargs
+
+    @pytest.mark.django_db(reset_sequences=True)
+    def test_reset_sequences_enabled(self, request):
+        marker = request.node.get_closest_marker("django_db")
+        assert marker.kwargs["reset_sequences"]
