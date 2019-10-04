@@ -36,9 +36,9 @@ class Movie(models.Model):
 
 
 class Rating(models.Model):
-    userid = models.ForeignKey(User, 
-                                on_delete=models.CASCADE,
-                                related_name='rating_user')
+    userid = models.ForeignKey(User,
+                               on_delete=models.CASCADE,
+                               related_name='rating_user')
     movieid = models.ForeignKey(Movie,
                                 on_delete=models.CASCADE,
                                 related_name='ratings')
@@ -47,3 +47,7 @@ class Rating(models.Model):
 
     def __str__(self):
         return '%s :%d' % ('rating', self.rating)
+
+
+class Item(models.Model):
+    name = models.CharField(max_length=100)
