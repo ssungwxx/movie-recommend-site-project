@@ -54,16 +54,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'api.disable.DisableCSRF',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
-    'http://13.124.185.249:8000',
+    '*',
 ]
 CORS_ORIGIN_REGEX_WHITELIST = [
-    'http://13.124.185.249:8000',
+    '*',
 ]
 
 ROOT_URLCONF = 'backend.urls'
