@@ -67,12 +67,12 @@ class Like_movieSerializer(serializers.ModelSerializer):
         fields = ('movieid', 'recommend_list_id', 'recommend_list_title')
     
     def get_recommend_list_id(self, obj):
-        recommend_list_id = (obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5, obj.rank6, obj.rank7, obj.rank8, obj.rank9, obj.rank10)
+        recommend_list_id = (obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5)
 
         return recommend_list_id
 
     def get_recommend_list_title(self, obj):
-        recommend_list_title = [obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5, obj.rank6, obj.rank7, obj.rank8, obj.rank9, obj.rank10]
+        recommend_list_title = [obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5]
         idx = 0
 
         for item in recommend_list_title:

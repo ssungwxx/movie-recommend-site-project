@@ -38,7 +38,13 @@ export default {
   classifyingMovies(params) {
     return axios.get(`${apiUrl}/classify/`, { params });
   },
-  recommendMovies(params) {
-    return axios.get(`${apiUrl}/likemovie`, {params});
+  userbased_recommendMovies(params) {
+    return axios.get(`${apiUrl}/userbased`, {params});
+  },
+  itembased_recommendMovies(params) {
+    return axios.get(`${apiUrl}/itembased`, {params});
+  },
+  matrix_recommendMovies(params) {
+    return axios.get(`${apiUrl}/matrixfactorization`, {params});
   }
 };
