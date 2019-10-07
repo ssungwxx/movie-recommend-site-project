@@ -46,5 +46,8 @@ export default {
   },
   matrix_recommendMovies(params) {
     return axios.get(`${apiUrl}/matrixfactorization`, {params});
+  },
+  movie_image(params){
+    return axios.get(`${apiUrl}/imageurl`, {params});
   }
 };

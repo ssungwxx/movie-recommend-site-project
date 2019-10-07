@@ -41,6 +41,13 @@
               <span class="headline">{{ title }}</span>
             </v-card-title>
             <v-card-text>
+              <v-img
+                :src = imgurll
+                aspect-ratio="1"
+                class="grey lighten-2"
+                max-width="300"
+                max-height="500"
+              ></v-img>
               장르 : {{ genresStr }}
               <br />
               평점 : {{ rating.toFixed(1) }}
@@ -138,10 +145,6 @@ export default {
       type: Array,
       default: () => new Array()
     },
-    img: {
-      type: String,
-      default: ""
-    },
     rating: {
       type: Number,
       default: 0.0
@@ -159,7 +162,8 @@ export default {
       matrix_recommendList: [],
       sheet_user: false,
       sheet_item: false,
-      sheet_matrix: false
+      sheet_matrix: false,
+      imgurl:"https://i.imgur.com/tq6diZs.jpg"
     };
   },
   mounted() {
@@ -172,13 +176,18 @@ export default {
   },
   methods: {
     async recommend() {
-      const params = {movieid: this.id}
+      const params = {movieid: this.id};
+      const imgurl_result = await api.movie_image(params);
       const user_result = await api.userbased_recommendMovies(params);
       const item_result = await api.itembased_recommendMovies(params);
       const matrix_result = await api.matrix_recommendMovies(params);
       this.user_recommendList = user_result.data[0].recommend_list_title;
       this.item_recommendList = item_result.data[0].recommend_list_title;
       this.matrix_recommendList = matrix_result.data[0].recommend_list_title;
+      console.log(imgurl_result)
+      // 여기서 예외 처리 해주기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      this.imgurl = imgurl_result.data[0].url;
     }
   }
 };
