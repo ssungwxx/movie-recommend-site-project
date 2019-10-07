@@ -42,13 +42,9 @@ INSTALLED_APPS = [
     # apps
     'api',
 
-<<<<<<< HEAD
     # cors-header
-    'corsheaders'
-=======
-    # cors headers
     'corsheaders',
->>>>>>> qa
+
 ]
 
 MIDDLEWARE = [
@@ -65,13 +61,8 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-<<<<<<< HEAD
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
-=======
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
->>>>>>> qa
 
 ROOT_URLCONF = 'backend.urls'
 
