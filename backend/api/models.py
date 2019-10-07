@@ -61,3 +61,28 @@ class Like_movie(models.Model):
     rank8 = models.IntegerField(default = 0)
     rank9 = models.IntegerField(default = 0)
     rank10 = models.IntegerField(default = 0)
+
+
+class item_based_movie(models.Model):
+    movieid = models.IntegerField(primary_key=True)
+    rank1 = models.IntegerField(default = 0)
+    rank2 = models.IntegerField(default = 0)
+    rank3 = models.IntegerField(default = 0)
+    rank4 = models.IntegerField(default = 0)
+    rank5 = models.IntegerField(default = 0)
+
+class user_based_movie(models.Model):
+    movieid = models.IntegerField(primary_key=True)
+    rank1 = models.IntegerField(default = 0)
+    rank2 = models.IntegerField(default = 0)
+    rank3 = models.IntegerField(default = 0)
+    rank4 = models.IntegerField(default = 0)
+    rank5 = models.IntegerField(default = 0)
+
+class matrix_factorization_movie(models.Model):
+    movieid = models.IntegerField(primary_key=True)
+    rank1 = models.IntegerField(default = 0)
+    rank2 = models.IntegerField(default = 0)
+    rank3 = models.IntegerField(default = 0)
+    rank4 = models.IntegerField(default = 0)
+    rank5 = models.IntegerField(default = 0)
