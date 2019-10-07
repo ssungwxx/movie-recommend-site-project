@@ -42,8 +42,13 @@ INSTALLED_APPS = [
     # apps
     'api',
 
+<<<<<<< HEAD
     # cors-header
     'corsheaders'
+=======
+    # cors headers
+    'corsheaders',
+>>>>>>> qa
 ]
 
 MIDDLEWARE = [
@@ -56,10 +61,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'api.disable.DisableCSRF',
+    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
+<<<<<<< HEAD
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+=======
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+>>>>>>> qa
 
 ROOT_URLCONF = 'backend.urls'
 
