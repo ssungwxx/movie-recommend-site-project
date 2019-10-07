@@ -6,6 +6,22 @@ from datetime import timezone, timedelta, datetime
 API_URL = 'http://localhost:8000/api/'
 headers = {'content-type': 'application/json'}
 
+def create_urls():
+    url_data = open('./movie_poster.csv', encoding='ISO-8859-1')
+    request_data = {'movie_urls': []}
+
+    for line in url_data.readlines():
+        [movieid, url] = line.split(',')
+        request_data['movie_urls'].append({
+            'movieid': movieid,
+            'url': url
+        })
+    print("movie_urls 넣는중")
+    response = requests.post(API_URL + 'imageurl/',
+                             data=json.dumps(request_data),
+                             headers=headers)
+    # print(response.text)
+
 
 def create_users(num_users):
     user_data = open('./users.dat', 'r', encoding='ISO-8859-1')
@@ -107,4 +123,5 @@ if __name__ == '__main__':
     num_users = 10000
     # create_movies()
     # create_users(num_users)
-    create_ratings(num_users)
+    #create_ratings(num_users)
+    create_urls()

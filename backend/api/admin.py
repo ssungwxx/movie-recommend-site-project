@@ -6,6 +6,7 @@ from api.models import Like_movie
 from api.models import user_based_movie
 from api.models import item_based_movie
 from api.models import matrix_factorization_movie
+from api.models import movie_url
 
 admin.site.register(Profile)
 admin.site.register(Movie)

@@ -7,6 +7,7 @@ from api.views import like_movie_views
 from api.views import classify_movies_views
 from api.views import item_based_views
 from api.views import user_based_views
+from api.views import movie_url_views
 from api.views import matrix_factorization_views
 
 urlpatterns = [
@@ -18,6 +19,7 @@ urlpatterns = [
     url('itembased/$', item_based_views.item_based_movies, name='item_based_list'),
     url('userbased/$', user_based_views.user_based_movies, name='user_based_list'),
     url('matrixfactorization/$', matrix_factorization_views.matrix_factorization_movies, name='matrix_factorization_list'),
+    url('imageurl/$', movie_url_views.movie_urls, name='movie_urls_list'),
     url('classify/$', classify_movies_views.classify_movies,
         name='classify_movies'),
 ]

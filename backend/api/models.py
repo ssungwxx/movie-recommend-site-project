@@ -86,3 +86,8 @@ class matrix_factorization_movie(models.Model):
     rank3 = models.IntegerField(default = 0)
     rank4 = models.IntegerField(default = 0)
     rank5 = models.IntegerField(default = 0)
+
+    
+class movie_url(models.Model):
+    movieid = models.IntegerField(primary_key=True)
+    url = models.CharField(max_length=300)
