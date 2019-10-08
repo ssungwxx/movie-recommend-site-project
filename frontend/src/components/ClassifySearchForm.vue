@@ -14,7 +14,7 @@
       <v-select v-model="jobDivision" :items="jobItems" label="정렬 구분"></v-select>
     </template>
     <v-layout justify-center pa-10>
-      <v-btn large color="indigo white--text" @click="onSubmit">Search</v-btn>
+      <v-btn large color="#bfbfbf white--text" @click="onSubmit">Search</v-btn>
     </v-layout>
   </v-form>
 </template>

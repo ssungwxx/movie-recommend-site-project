@@ -4,7 +4,7 @@
     <v-select v-model="sortDivision" :items="sortItems" label="정렬 구분"></v-select>
     <v-text-field xs6 v-model="param" label="검색어" />
     <v-layout justify-center pa-10>
-      <v-btn large color="indigo white--text" @click="onSubmit">Search</v-btn>
+      <v-btn large color="#666666 white--text" @click="onSubmit">Search</v-btn>
     </v-layout>
   </v-form>
 </template>

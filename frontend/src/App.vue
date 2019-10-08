@@ -1,8 +1,8 @@
 <template>
     <v-app id="app">
-        <v-app-bar app clipped-left color="indigo">
+        <v-app-bar app clipped-left color="#808080">
             <v-app-bar-nav-icon class="white--text" @click="drawer = !drawer" />
-            <span class="title ml-3 mr-5 white--text">영화 추천 서비스</span>
+            <span class="title ml-3 mr-5 white--text">Movie Recommendation Service ^__^</span>
             <v-spacer />
         </v-app-bar>
 
