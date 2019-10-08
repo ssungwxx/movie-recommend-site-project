@@ -41,12 +41,82 @@
               <span class="headline">{{ title }}</span>
             </v-card-title>
             <v-card-text>
+              <v-img
+                :src = imgurll
+                aspect-ratio="1"
+                class="grey lighten-2"
+                max-width="300"
+                max-height="500"
+              ></v-img>
               장르 : {{ genresStr }}
               <br />
               평점 : {{ rating.toFixed(1) }}
               <br />
               시청수 : {{ viewCnt }}
-              <br />내용이 들어갈 곳입니다.
+              <br />
+              <br />
+              <div class="text-center">
+                <v-bottom-sheet v-model="sheet_user">
+                  <template v-slot:activator="{ on }">
+                    <v-btn text large
+                      v-on="on"
+                    >
+                      User_based
+                    </v-btn>
+                  </template>
+                    <v-sheet class="text-center" height="300px">
+                      <v-flex v-for="movie1 in user_recommendList" :key="movie1.id">
+                        <v-card max-width="1000" class="mx-auto">
+                        <v-card-title class="headline">{{ movie1 }}</v-card-title>
+                      </v-card>
+                    </v-flex>
+                  </v-sheet>
+                </v-bottom-sheet>
+              </div>
+              <div class="text-center">
+                <v-bottom-sheet v-model="sheet_item">
+                  <template v-slot:activator="{ on }">
+                    <v-btn text large
+                      color="error"
+                      v-on="on"
+                    >
+                      Item_based
+                    </v-btn>
+                  </template>
+                  <v-sheet class="text-center" height="300px">
+                      <v-flex v-for="movie2 in item_recommendList" :key="movie2.id">
+                        <v-card max-width="1000" class="mx-auto">
+                        <v-card-title class="headline">{{ movie2 }}</v-card-title>
+                      </v-card>
+                    </v-flex>
+                  </v-sheet>
+                </v-bottom-sheet>
+              </div>
+              <div class="text-center">
+                <v-bottom-sheet v-model="sheet_matrix">
+                  <template v-slot:activator="{ on }">
+                    <v-btn text large
+                      color="primary"
+                      v-on="on"
+                    >
+                      Matrix_Factorization
+                    </v-btn>
+                  </template>
+                  <v-sheet class="text-center" height="300px">
+                      <v-flex v-for="movie3 in matrix_recommendList" :key="movie3.id">
+                        <v-card max-width="1000" class="mx-auto">
+                        <v-card-title class="headline">{{ movie3 }}</v-card-title>
+                      </v-card>
+                    </v-flex>
+                  </v-sheet>
+                </v-bottom-sheet>
+              </div>
+
+              <!-- <v-flex v-for="movie in recommendList" :key="movie.id">
+                <v-card max-width="344" class="mx-auto">
+                  <v-card-title class="headline">{{ movie }}</v-card-title>
+                </v-card>
+              </v-flex> -->
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -57,6 +127,10 @@
 
 <script>
 import { mapActions } from "vuex";
+import axios from "axios";
+
+import api from "../api";
+
 export default {
   props: {
     id: {
@@ -71,10 +145,6 @@ export default {
       type: Array,
       default: () => new Array()
     },
-    img: {
-      type: String,
-      default: ""
-    },
     rating: {
       type: Number,
       default: 0.0
@@ -86,12 +156,38 @@ export default {
   },
   data() {
     return {
-      dialog: false
+      dialog: false,
+      user_recommendList: [],
+      item_recommendList: [],
+      matrix_recommendList: [],
+      sheet_user: false,
+      sheet_item: false,
+      sheet_matrix: false,
+      imgurl:"https://i.imgur.com/tq6diZs.jpg"
     };
+  },
+  mounted() {
+    this.recommend();
   },
   computed: {
     genresStr: function() {
       return this.genres.join(" / ");
+    }
+  },
+  methods: {
+    async recommend() {
+      const params = {movieid: this.id};
+      const imgurl_result = await api.movie_image(params);
+      const user_result = await api.userbased_recommendMovies(params);
+      const item_result = await api.itembased_recommendMovies(params);
+      const matrix_result = await api.matrix_recommendMovies(params);
+      this.user_recommendList = user_result.data[0].recommend_list_title;
+      this.item_recommendList = item_result.data[0].recommend_list_title;
+      this.matrix_recommendList = matrix_result.data[0].recommend_list_title;
+      console.log(imgurl_result)
+      // 여기서 예외 처리 해주기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      this.imgurl = imgurl_result.data[0].url;
     }
   }
 };

@@ -1,6 +1,15 @@
-from .models import Profile, Movie, Rating
+# -*- coding:utf-8 -*-
+from .models import Profile, Movie, Rating, Like_movie, item_based_movie, movie_url
 from rest_framework import serializers
 from django.db.models import Avg
+
+class MovieurlSerializer(serializers.ModelSerializer):
+    movieid = serializers.ReadOnlyField()
+    url = serializers.ReadOnlyField()
+    
+    class Meta:
+        model = movie_url
+        fields = ('movieid', 'url')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -53,3 +62,59 @@ class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
         fields = ('id', 'userid', 'movieid', 'rating', 'timestamp')
+
+
+
+class Like_movieSerializer(serializers.ModelSerializer):
+    recommend_list_id = serializers.SerializerMethodField('get_recommend_list_id')
+    recommend_list_title = serializers.SerializerMethodField('get_recommend_list_title')
+
+
+    class Meta:
+        model = Like_movie
+        fields = ('movieid', 'recommend_list_id', 'recommend_list_title')
+    
+    def get_recommend_list_id(self, obj):
+        recommend_list_id = (obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5)
+
+        return recommend_list_id
+
+    def get_recommend_list_title(self, obj):
+        recommend_list_title = [obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5]
+        idx = 0
+
+        for item in recommend_list_title:
+            movie = Movie.objects.all()
+            movie = movie.filter(pk=item)
+            recommend_list_title[idx] = movie[0].title
+            idx = idx + 1
+
+        return recommend_list_title
+        
+
+class Recommend_movieSerializer(serializers.ModelSerializer):
+    recommend_list_id = serializers.SerializerMethodField('get_recommend_list_id')
+    recommend_list_title = serializers.SerializerMethodField('get_recommend_list_title')
+
+
+    class Meta:
+        model = item_based_movie
+        fields = ('movieid', 'recommend_list_id', 'recommend_list_title')
+    
+    def get_recommend_list_id(self, obj):
+        recommend_list_id = (obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5)
+
+        return recommend_list_id
+
+    def get_recommend_list_title(self, obj):
+        recommend_list_title = [obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5]
+        idx = 0
+
+        for item in recommend_list_title:
+            movie = Movie.objects.all()
+            movie = movie.filter(pk=item)
+            recommend_list_title[idx] = movie[0].title
+            idx = idx + 1
+
+        return recommend_list_title
+         

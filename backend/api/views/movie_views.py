@@ -16,7 +16,6 @@ def movies(request):
         genre = request.GET.get('genre', None)
 
         movies = Movie.objects.all()
-
         if id:
             movies = movies.filter(pk=id)
         if title:
