@@ -93,18 +93,35 @@ class Like_movieSerializer(serializers.ModelSerializer):
         
 
 class Recommend_movieSerializer(serializers.ModelSerializer):
-    recommend_list_id = serializers.SerializerMethodField('get_recommend_list_id')
+    recommend_list_url = serializers.SerializerMethodField('get_recommend_list_url')
     recommend_list_title = serializers.SerializerMethodField('get_recommend_list_title')
 
 
     class Meta:
         model = item_based_movie
-        fields = ('movieid', 'recommend_list_id', 'recommend_list_title')
+        fields = ('movieid', 'recommend_list_title', 'recommend_list_url')
     
-    def get_recommend_list_id(self, obj):
-        recommend_list_id = (obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5)
+    def get_recommend_list_url(self, obj):
+        recommend_list_url = [obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5]
+        idx = 0
 
-        return recommend_list_id
+        for item in recommend_list_url:
+            if item > 1682:
+                recommend_list_url[idx] = "https://i.imgur.com/HncFNYB.jpg"
+            
+            elif item == 0:
+                recommend_list_url[idx] = "https://i.imgur.com/HncFNYB.jpg"
+            
+            elif item == -1:
+                recommend_list_url[idx] = "https://i.imgur.com/HncFNYB.jpg"
+            
+            else:   
+                movie = movie_url.objects.all()
+                movie = movie.filter(pk=item)
+                recommend_list_url[idx] = movie[0].url
+            idx = idx + 1
+
+        return recommend_list_url
 
     def get_recommend_list_title(self, obj):
         recommend_list_title = [obj.rank1, obj.rank2, obj.rank3, obj.rank4, obj.rank5]
