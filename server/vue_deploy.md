@@ -19,3 +19,7 @@ index.html을 지정하여 빌드하면 된다.
 Nginx의 기본 옵션으로 배포를 하게되면 메인페이지를 제외한 URL에서 새고침을 할 경우 404 error page가 나타나는 상황이 발생한다.
 해당 문제는 Nginx의 url 매핑문제와 현재 프로젝트의 프론트엔드가 SPA로 설계되어있어서 발생한 문제였다.
 이 문제는 Nginx의 설정파일에서 URL매핑을 새롭게 해주면 해결된다.
+
+### 참고사이트
+
+[How to handle 404 error request in vuejs SPA with nginx server]](https://stackoverflow.com/questions/52471007/how-to-handle-404-error-request-in-vuejs-spa-with-nginx-server)
