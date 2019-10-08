@@ -1,32 +1,33 @@
 import axios from "axios";
 
-const apiUrl = "/api";
+const apiUrl = "http://52.79.111.26:8000/api";
 
 export default {
-  searchMovies(params) {
-    return axios.get(`${apiUrl}/movies/`, {
-      params
-    });
-  },
-  searchRatings(params) {
-    return axios.get(`${apiUrl}/ratings/`, {
-      params
-    });
-  },
-  serachProfiles(params) {
-    return axios.get(`${apiUrl}/profiles/`, {
-      params
-    });
-  },
-  updateMovie(data) {
-    const genre = data.genres.replace("/,/gi", "|");
+    searchMovies(params) {
+        return axios.get(`${apiUrl}/movies/`, {
+            params
+        });
+    },
+    searchRatings(params) {
+        return axios.get(`${apiUrl}/ratings/`, {
+            params
+        });
+    },
+    serachProfiles(params) {
+        return axios.get(`${apiUrl}/profiles/`, {
+            params
+        });
+    },
+    updateMovie(data) {
+        const genre = data.genres.replace("/,/gi", "|");
 
-    const movie = {
-      id: data.id,
-      title: data.title,
-      genres: genre
-    };
+        const movie = {
+            id: data.id,
+            title: data.title,
+            genres: genre
+        };
 
+<<<<<<< HEAD
     return axios.put(`${apiUrl}/movies/`, movie);
   },
   updateProfile(data) {
@@ -50,4 +51,20 @@ export default {
   movie_image(params){
     return axios.get(`${apiUrl}/imageurl`, {params});
   }
+=======
+        return axios.put(`${apiUrl}/movies/`, movie);
+    },
+    updateProfile(data) {
+        return axios.put(`${apiUrl}/profiles/`, data);
+    },
+    updateRating(data) {
+        return axios.put(`${apiUrl}/ratings/`, data);
+    },
+    classifyingMovies(params) {
+        return axios.get(`${apiUrl}/classify/`, { params });
+    },
+    recommendMovies(data) {
+        return axios.get(`${apiUrl}/likemovie/`, data);
+    }
+>>>>>>> develope
 };
