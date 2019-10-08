@@ -42,7 +42,7 @@
             </v-card-title>
             <v-card-text>
               <v-img
-                :src = imgurll
+                :src = imgurl
                 aspect-ratio="1"
                 class="grey lighten-2"
                 max-width="300"
@@ -186,7 +186,7 @@ export default {
       this.matrix_recommendList = matrix_result.data[0].recommend_list_title;
       console.log(imgurl_result)
       // 여기서 예외 처리 해주기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+  
       this.imgurl = imgurl_result.data[0].url;
     }
   }
