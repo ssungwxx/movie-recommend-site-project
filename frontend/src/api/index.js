@@ -26,45 +26,27 @@ export default {
             title: data.title,
             genres: genre
         };
-
-<<<<<<< HEAD
     return axios.put(`${apiUrl}/movies/`, movie);
-  },
-  updateProfile(data) {
-    return axios.put(`${apiUrl}/profiles/`, data);
-  },
-  updateRating(data) {
-    return axios.put(`${apiUrl}/ratings/`, data);
-  },
-  classifyingMovies(params) {
-    return axios.get(`${apiUrl}/classify/`, { params });
-  },
-  userbased_recommendMovies(params) {
-    return axios.get(`${apiUrl}/userbased`, {params});
-  },
-  itembased_recommendMovies(params) {
-    return axios.get(`${apiUrl}/itembased`, {params});
-  },
-  matrix_recommendMovies(params) {
-    return axios.get(`${apiUrl}/matrixfactorization`, {params});
-  },
-  movie_image(params){
-    return axios.get(`${apiUrl}/imageurl`, {params});
-  }
-=======
-        return axios.put(`${apiUrl}/movies/`, movie);
     },
     updateProfile(data) {
-        return axios.put(`${apiUrl}/profiles/`, data);
+      return axios.put(`${apiUrl}/profiles/`, data);
     },
     updateRating(data) {
-        return axios.put(`${apiUrl}/ratings/`, data);
+      return axios.put(`${apiUrl}/ratings/`, data);
     },
     classifyingMovies(params) {
-        return axios.get(`${apiUrl}/classify/`, { params });
+      return axios.get(`${apiUrl}/classify/`, { params });
     },
-    recommendMovies(data) {
-        return axios.get(`${apiUrl}/likemovie/`, data);
+    userbased_recommendMovies(params) {
+      return axios.get(`${apiUrl}/userbased`, {params});
+    },
+    itembased_recommendMovies(params) {
+      return axios.get(`${apiUrl}/itembased`, {params});
+    },
+    matrix_recommendMovies(params) {
+      return axios.get(`${apiUrl}/matrixfactorization`, {params});
+    },
+    movie_image(params){
+      return axios.get(`${apiUrl}/imageurl`, {params});
     }
->>>>>>> develope
 };
