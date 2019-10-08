@@ -41,20 +41,20 @@
               <span class="headline">{{ title }}</span>
             </v-card-title>
             <v-card-text>
-              <v-img
-                :src = imgurll
-                aspect-ratio="1"
-                class="grey lighten-2"
-                max-width="300"
-                max-height="500"
-              ></v-img>
-              장르 : {{ genresStr }}
+              <v-layout>
+              <v-flex xs5>
+                장르 : {{ genresStr }}
               <br />
               평점 : {{ rating.toFixed(1) }}
               <br />
               시청수 : {{ viewCnt }}
               <br />
               <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              
               <div class="text-center">
                 <v-bottom-sheet v-model="sheet_user">
                   <template v-slot:activator="{ on }">
@@ -64,12 +64,31 @@
                       User_based
                     </v-btn>
                   </template>
-                    <v-sheet class="text-center" height="300px">
-                      <v-flex v-for="movie1 in user_recommendList" :key="movie1.id">
-                        <v-card max-width="1000" class="mx-auto">
-                        <v-card-title class="headline">{{ movie1 }}</v-card-title>
-                      </v-card>
-                    </v-flex>
+                  <v-sheet class="text-center" height="470px" color=rgba(0,0,0,0.7)>
+                    <v-layout>
+                      <v-flex sm1/>
+                      <v-flex sm2 v-for="movie1 in user_recommendList" :key="movie1.id">
+                        <div style="padding:20px;">
+                          <p style="color: white; font-size:20px;">{{movie1}}</p>
+                        </div>
+                      </v-flex>
+                      <v-flex sm1/>
+                    </v-layout><v-layout>
+                      <v-flex sm1/>
+                      <v-flex sm2 v-for="movie1_url in user_recommendList_url" :key="movie1_url.url">
+                        <div style="padding:20px;">
+                          <v-img
+                            :src = movie1_url
+                            aspect-ratio="1"
+                            class="grey lighten-2"
+                            max-width="300"
+                            max-height="500"
+                          ></v-img>
+                        </div>
+                      </v-flex>
+                      <v-flex sm1/>
+                    </v-layout>
+                  
                   </v-sheet>
                 </v-bottom-sheet>
               </div>
@@ -83,12 +102,31 @@
                       Item_based
                     </v-btn>
                   </template>
-                  <v-sheet class="text-center" height="300px">
-                      <v-flex v-for="movie2 in item_recommendList" :key="movie2.id">
-                        <v-card max-width="1000" class="mx-auto">
-                        <v-card-title class="headline">{{ movie2 }}</v-card-title>
-                      </v-card>
-                    </v-flex>
+                  <v-sheet class="text-center" height="470px" color=rgba(0,0,0,0.7)>
+                    <v-layout>
+                      <v-flex sm1/>
+                      <v-flex sm2 v-for="movie2 in item_recommendList" :key="movie2.id">
+                        <div style="padding:20px;">
+                          <p style="color: white; font-size:20px;">{{movie2}}</p>
+                        </div>
+                      </v-flex>
+                      <v-flex sm1/>
+                    </v-layout><v-layout>
+                      <v-flex sm1/>
+                      <v-flex sm2 v-for="movie2_url in item_recommendList_url" :key="movie2_url.url">
+                        <div style="padding:20px;">
+                          <v-img
+                            :src = movie2_url
+                            aspect-ratio="1"
+                            class="grey lighten-2"
+                            max-width="300"
+                            max-height="500"
+                          ></v-img>
+                        </div>
+                      </v-flex>
+                      <v-flex sm1/>
+                    </v-layout>
+                  
                   </v-sheet>
                 </v-bottom-sheet>
               </div>
@@ -102,21 +140,49 @@
                       Matrix_Factorization
                     </v-btn>
                   </template>
-                  <v-sheet class="text-center" height="300px">
-                      <v-flex v-for="movie3 in matrix_recommendList" :key="movie3.id">
-                        <v-card max-width="1000" class="mx-auto">
-                        <v-card-title class="headline">{{ movie3 }}</v-card-title>
-                      </v-card>
-                    </v-flex>
+                  <v-sheet class="text-center" height="470px" color=rgba(0,0,0,0.7)>
+                    <v-layout>
+                      <v-flex sm1/>
+                      <v-flex sm2 v-for="movie3 in matrix_recommendList" :key="movie3.id">
+                        <div style="padding:20px;">
+                          <p style="color: white; font-size:20px;">{{movie3}}</p>
+                        </div>
+                      </v-flex>
+                      <v-flex sm1/>
+                    </v-layout><v-layout>
+                      <v-flex sm1/>
+                      <v-flex sm2 v-for="movie3_url in matrix_recommendList_url" :key="movie3_url.url">
+                        <div style="padding:20px;">
+                          <v-img
+                            :src = movie3_url
+                            aspect-ratio="1"
+                            class="grey lighten-2"
+                            max-width="300"
+                            max-height="500"
+                          ></v-img>
+                        </div>
+                      </v-flex>
+                      <v-flex sm1/>
+                    </v-layout>
+                  
                   </v-sheet>
                 </v-bottom-sheet>
               </div>
+              </v-flex>
 
-              <!-- <v-flex v-for="movie in recommendList" :key="movie.id">
-                <v-card max-width="344" class="mx-auto">
-                  <v-card-title class="headline">{{ movie }}</v-card-title>
-                </v-card>
-              </v-flex> -->
+              <v-flex xs7>
+              <v-img
+                :src = imgurl
+                aspect-ratio="1"
+                class="grey lighten-2"
+                max-width="300"
+                max-height="500"
+              ></v-img>
+              </v-flex>
+              </v-layout>
+              <br />
+              
+
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -160,6 +226,9 @@ export default {
       user_recommendList: [],
       item_recommendList: [],
       matrix_recommendList: [],
+      user_recommendList_url: [],
+      item_recommendList_url: [],
+      matrix_recommendList_url: [],
       sheet_user: false,
       sheet_item: false,
       sheet_matrix: false,
@@ -181,10 +250,14 @@ export default {
       const user_result = await api.userbased_recommendMovies(params);
       const item_result = await api.itembased_recommendMovies(params);
       const matrix_result = await api.matrix_recommendMovies(params);
+      console.log(matrix_result)
       this.user_recommendList = user_result.data[0].recommend_list_title;
       this.item_recommendList = item_result.data[0].recommend_list_title;
       this.matrix_recommendList = matrix_result.data[0].recommend_list_title;
-      console.log(imgurl_result)
+      this.user_recommendList_url = user_result.data[0].recommend_list_url;
+      this.item_recommendList_url = item_result.data[0].recommend_list_url;
+      this.matrix_recommendList_url = matrix_result.data[0].recommend_list_url;
+      
       // 여기서 예외 처리 해주기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
       this.imgurl = imgurl_result.data[0].url;
