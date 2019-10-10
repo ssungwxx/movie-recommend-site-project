@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import api from "../api/index";
+
 export default {
   data() {
     return {
@@ -92,10 +94,6 @@ export default {
         Age: "",
         Gender: "",
         Occupation: ""
-      },
-      err_stat: {
-        status: "",
-        msg: ""
       }
     };
   },
@@ -107,6 +105,14 @@ export default {
   methods: {
     async submit() {
       if (this.$refs.form.validate()) {
+        const resp = await api.signup(this.user);
+        if (resp.status == 201) {
+          alert("Signed up!");
+          this.reset();
+          this.dialog = false;
+        } else {
+          alert("Check your form again!");
+        }
       }
     },
     reset() {

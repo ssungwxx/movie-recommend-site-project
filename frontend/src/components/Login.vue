@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -58,8 +60,11 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["Login"]),
     async Login() {
       if (this.$refs.form.validate()) {
+        this.Login();
+        this.dialog = false;
       }
     },
     reset() {

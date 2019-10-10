@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const apiUrl = "http://127.0.0.1:8000/api";
-const apiUrl = "http://52.79.111.26:8000/api";
+const apiUrl = "http://127.0.0.1:8000/api";
+// const apiUrl = "http://52.79.111.26:8000/api";
 
 export default {
   searchMovies(params) {
@@ -51,9 +51,9 @@ export default {
     return axios.get(`${apiUrl}/imageurl`, { params });
   },
   signup(params) {
-    return axios.get(`${apiUrl}/signup`, { params });
+    return axios.post(`${apiUrl}/signup/`, { params });
   },
   login(params) {
-    return axios.get(`${apiUrl}/login`, { params });
+    return axios.get(`${apiUrl}/login/`, { params });
   }
 };

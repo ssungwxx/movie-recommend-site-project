@@ -11,9 +11,9 @@ class Profile(models.Model):
 
 #  wrapper for create user Profile
 def create_profile(**kwargs):
+    print(kwargs['username'])
     user = User.objects.create_user(
         username=kwargs['username'],
-        password=kwargs['password'],
         is_active=True,
     )
 
@@ -48,48 +48,52 @@ class Rating(models.Model):
     def __str__(self):
         return '%s :%d' % ('rating', self.rating)
 
+
 class Like_movie(models.Model):
     movieid = models.IntegerField(primary_key=True)
-    rank1 = models.IntegerField(default = 0)
-    rank2 = models.IntegerField(default = 0)
-    rank3 = models.IntegerField(default = 0)
-    rank4 = models.IntegerField(default = 0)
-    rank5 = models.IntegerField(default = 0)
-    rank6 = models.IntegerField(default = 0)
-    rank7 = models.IntegerField(default = 0)
-    rank8 = models.IntegerField(default = 0)
-    rank9 = models.IntegerField(default = 0)
-    rank10 = models.IntegerField(default = 0)
+    rank1 = models.IntegerField(default=0)
+    rank2 = models.IntegerField(default=0)
+    rank3 = models.IntegerField(default=0)
+    rank4 = models.IntegerField(default=0)
+    rank5 = models.IntegerField(default=0)
+    rank6 = models.IntegerField(default=0)
+    rank7 = models.IntegerField(default=0)
+    rank8 = models.IntegerField(default=0)
+    rank9 = models.IntegerField(default=0)
+    rank10 = models.IntegerField(default=0)
 
 
 class item_based_movie(models.Model):
     movieid = models.IntegerField(primary_key=True)
-    rank1 = models.IntegerField(default = 0)
-    rank2 = models.IntegerField(default = 0)
-    rank3 = models.IntegerField(default = 0)
-    rank4 = models.IntegerField(default = 0)
-    rank5 = models.IntegerField(default = 0)
+    rank1 = models.IntegerField(default=0)
+    rank2 = models.IntegerField(default=0)
+    rank3 = models.IntegerField(default=0)
+    rank4 = models.IntegerField(default=0)
+    rank5 = models.IntegerField(default=0)
+
 
 class user_based_movie(models.Model):
     movieid = models.IntegerField(primary_key=True)
-    rank1 = models.IntegerField(default = 0)
-    rank2 = models.IntegerField(default = 0)
-    rank3 = models.IntegerField(default = 0)
-    rank4 = models.IntegerField(default = 0)
-    rank5 = models.IntegerField(default = 0)
+    rank1 = models.IntegerField(default=0)
+    rank2 = models.IntegerField(default=0)
+    rank3 = models.IntegerField(default=0)
+    rank4 = models.IntegerField(default=0)
+    rank5 = models.IntegerField(default=0)
+
 
 class matrix_factorization_movie(models.Model):
     movieid = models.IntegerField(primary_key=True)
-    rank1 = models.IntegerField(default = 0)
-    rank2 = models.IntegerField(default = 0)
-    rank3 = models.IntegerField(default = 0)
-    rank4 = models.IntegerField(default = 0)
-    rank5 = models.IntegerField(default = 0)
+    rank1 = models.IntegerField(default=0)
+    rank2 = models.IntegerField(default=0)
+    rank3 = models.IntegerField(default=0)
+    rank4 = models.IntegerField(default=0)
+    rank5 = models.IntegerField(default=0)
 
-    
+
 class movie_url(models.Model):
     movieid = models.IntegerField(primary_key=True)
     url = models.CharField(max_length=300)
+
 
 class Item(models.Model):
     name = models.CharField(max_length=100)

@@ -112,9 +112,15 @@ const actions = {
       commit("setisLogin", true);
     } else {
       const resp = await api.login(params);
-      const user = resp.data.user;
-      commit("setUser", user);
-      commit("setisLogin", true);
+      if (resp.status == 200) {
+        sessionStorage.setItem("user", resp.user);
+        alert("Login!");
+        const user = resp.user;
+        commit("setUser", user);
+        commit("setisLogin", true);
+      } else {
+        alert("Check yout id or password again!");
+      }
     }
   },
   logout({ commit }) {
