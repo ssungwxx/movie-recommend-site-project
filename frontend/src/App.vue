@@ -4,6 +4,9 @@
             <v-app-bar-nav-icon class="white--text" @click="drawer = !drawer" />
             <span class="title ml-3 mr-5 white--text">영화 추천 서비스</span>
             <v-spacer />
+
+             <a @click=goTo_signup() style="color: white;"> SignUp</a>
+
         </v-app-bar>
 
         <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4">
@@ -72,6 +75,9 @@ export default {
     methods: {
         goTo: function(path) {
             router.push({ name: path });
+        },
+        goTo_signup: function() {
+            router.push({ name: "signup"});
         }
     }
 };
