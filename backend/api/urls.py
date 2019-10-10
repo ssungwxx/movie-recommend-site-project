@@ -9,7 +9,6 @@ from api.views import item_based_views
 from api.views import user_based_views
 from api.views import movie_url_views
 from api.views import matrix_factorization_views
-from api.views import login_views
 
 urlpatterns = [
     url('auth/signup-many/$', auth_views.signup_many, name='sign_up_many'),
