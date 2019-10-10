@@ -4,7 +4,6 @@
       <v-app-bar-nav-icon class="white--text" @click="drawer = !drawer" />
       <span class="title ml-3 mr-5 white--text">Movie Recommendation Service ^__^</span>
       <v-spacer />
-      <v-btn large color="#666666 white--text" @click="subscribe">Subscribe - ￦8,900</v-btn>
       <div class="signup">
         <v-tooltip bottom>
           <SignUp slot="activator" />
@@ -39,6 +38,8 @@
             </v-list-item-content>
           </v-list-item>
         </template>
+        
+        <v-btn style="margin: 25px; " large color="#666666 white--text" @click="subscribe">Subscribe - ￦8,900</v-btn>
       </v-list>
     </v-navigation-drawer>
 
@@ -57,6 +58,7 @@
 import router from "./router";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import Vue from 'vue';
 
 export default {
   name: "App",
