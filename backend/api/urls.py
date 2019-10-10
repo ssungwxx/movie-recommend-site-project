@@ -9,6 +9,7 @@ from api.views import item_based_views
 from api.views import user_based_views
 from api.views import movie_url_views
 from api.views import matrix_factorization_views
+from api.views import login_views
 
 urlpatterns = [
     url('auth/signup-many/$', auth_views.signup_many, name='sign_up_many'),
@@ -24,4 +25,5 @@ urlpatterns = [
     url('classify/$', classify_movies_views.classify_movies,
         name='classify_movies'),
     url('signup/$', profile_views.profiles, name='signup'),
+    url('login/$', profile_views.profiles, name='login')
 ]

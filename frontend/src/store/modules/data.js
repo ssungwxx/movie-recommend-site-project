@@ -101,29 +101,33 @@ const actions = {
       rating: d.average_rating,
       occupation_array: d.occupation_array
     }));
-    console.log(movies.length);
-
-    console.log("121212");
 
     commit("setClassifiedMovies", movies);
   },
   async Login({ commit }, params) {
-    if (sessionStorage.user) {
+    if (sessionStorage.getItem("user")) {
       commit("setisLogin", true);
     } else {
+      console.log(params);
+
       const resp = await api.login(params);
       if (resp.status == 200) {
+        console.log("dsds");
+        console.log(resp.data);
+
+        console.log(resp.status);
+
         sessionStorage.setItem("user", resp.user);
         alert("Login!");
         const user = resp.user;
         commit("setUser", user);
         commit("setisLogin", true);
       } else {
-        alert("Check yout id or password again!");
+        alert("Check your id or password again!");
       }
     }
   },
-  logout({ commit }) {
+  Logout({ commit }) {
     commit("setisLogin", false);
     commit("setUser", "");
   }

@@ -35,7 +35,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" @click="Login">Login</v-btn>
+          <v-btn color="blue" @click="submit">Login</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -60,10 +60,17 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["Login"]),
-    async Login() {
+    ...mapActions("data", ["Login"]),
+    async submit() {
+      console.log("dd");
+
       if (this.$refs.form.validate()) {
-        this.Login();
+        console.log("ddd");
+        console.log(this.data);
+
+        await this.Login(this.data);
+        console.log("ddddd");
+
         this.dialog = false;
       }
     },
