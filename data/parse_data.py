@@ -110,8 +110,8 @@ def create_ratings(num_users):
             item.strftime('%Y-%m-%d %H:%M:%S')
         })
 
-        if len(request_data['ratings']) >= num_users:
-            break
+        #if len(request_data['ratings']) >= num_users:
+        #    break
     print("ratring 넣는중")
     response = requests.post(API_URL + 'ratings/',
                              data=json.dumps(request_data),
@@ -121,7 +121,7 @@ def create_ratings(num_users):
 
 if __name__ == '__main__':
     num_users = 10000
-    # create_movies()
-    # create_users(num_users)
-    #create_ratings(num_users)
+    create_movies()
+    create_users(num_users)
+    create_ratings(num_users)
     create_urls()

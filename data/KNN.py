@@ -82,6 +82,6 @@ def create_matrix_factorization():
                              headers=headers)
     # print(response.text)
 if __name__ == '__main__':
-    #create_item_based()
+    create_item_based()
     create_user_based()
     create_matrix_factorization()
