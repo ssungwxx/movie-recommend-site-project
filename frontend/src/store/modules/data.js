@@ -8,7 +8,9 @@ const state = {
   AllMovieList: [],
   AllProfileList: [],
   AllRatingList: [],
-  classifiedList: []
+  classifiedList: [],
+  isLogin: false,
+  user: ""
 };
 
 // actions
@@ -104,6 +106,20 @@ const actions = {
     console.log("121212");
 
     commit("setClassifiedMovies", movies);
+  },
+  async Login({ commit }, params) {
+    if (sessionStorage.user) {
+      commit("setisLogin", true);
+    } else {
+      const resp = await api.login(params);
+      const user = resp.data.user;
+      commit("setUser", user);
+      commit("setisLogin", true);
+    }
+  },
+  logout({ commit }) {
+    commit("setisLogin", false);
+    commit("setUser", "");
   }
 };
 
@@ -174,6 +190,12 @@ const mutations = {
     state.classifiedList = movies.map(m => m);
     console.log(state.classifiedList.length);
     console.log("setter");
+  },
+  setisLogin(state, isLogin) {
+    state.isLogin = isLogin;
+  },
+  setUser(state, user) {
+    state.user = user;
   }
 };
 
