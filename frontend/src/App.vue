@@ -64,37 +64,6 @@ export default {
     SignUp,
     Login
   },
-  data: () => ({
-    drawer: null,
-    choices: [
-      {
-        icon: "mdi-movie",
-        text: "영화 검색",
-        path: "movie-search"
-      },
-      {
-        icon: "mdi-movie",
-        text: "유저 검색",
-        path: "profile-search"
-      },
-      {
-        icon: "mdi-movie",
-        text: "관리자 데이터 변경",
-        path: "admin-data"
-      },
-      {
-        text: "분류 검색",
-        path: "classify-search"
-      }
-    ]
-  }),
-  methods: {
-    goTo: function(path) {
-      router.push({ name: path });
-import Vue from 'vue'
-
-
-export default {
     data: () => ({
         drawer: null,
         choices: [
