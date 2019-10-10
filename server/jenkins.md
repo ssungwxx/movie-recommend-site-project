@@ -32,6 +32,69 @@ sudo apt-get install jenkins
 6. Push Event로 설정하고 브런치 이름을 적으면 특정 브런치 푸쉬 이벤트 발생시 실행 됨
 7. 저장 후 테스트 버튼으로 Push Event 클릭 시 Jenkins 프로젝트가 작동하면 성공
 
+## Unit Test 준비
+
+### 시작전에 설치해야할 것들
+
+```
+pytest==5.1.3
+pytest-django==3.5.1
+pep8==1.7.1
+pyflakes==2.1.1
+pylint==2.3.1
+pylint-django==2.0.11
+coverage==4.5.4
+```
+
+를 requirements.txt에 추가
+
+### Jenkins Shell Script
+
+```
+# 백엔드로 이동 & 가상환경 파이썬 작업
+cd backend
+. /home/ubuntu/bigdataProject/bin/activate
+sudo pip3 install -r requirements.txt
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+# 기존 로그 파일 삭제
+rm -f results/pep8.log results/pyflakes.log results/coverage.xml
+
+# 유닛테스트 실행 - result.xml 생성
+pytest --junitxml=results/result_pytest.xml
+
+# coverage 테스트 - test_sample로 실행
+coverage run tests/test_sample.py
+coverage xml -o results/coverage.xml
+coverage html -d coverage
+
+# pep8, pyflakes log파일 생성
+pep8 --config=pep8.cfg uit > results/pep8.log || true
+pyflakes test_project > results/pyflakes.log || true
+
+# 배포하기위한 폴더로 복사
+sudo cp -Rf ../backend /home/ubuntu/develope
+sudo cp -Rf ../data /home/ubuntu/develope
+
+# 현재 위치 변경
+cd /home/ubuntu/develope/backend
+
+# 저장해놓은 DB 이동
+cp /home/ubuntu/db.sqlite3 ./
+
+# 배포를 위한 재시작
+sudo service nginx restart
+sudo supervisorctl reload
+
+# 가상환경 종료
+deactivate
+```
+
 ### 참고사이트
 
 https://zetawiki.com/wiki/%EC%9A%B0%EB%B6%84%ED%88%AC_Jenkins_%EC%84%A4%EC%B9%98
+
+https://docs.pytest.org/
+
+https://tomining.tistory.com/147
