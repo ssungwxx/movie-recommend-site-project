@@ -5,7 +5,7 @@
             <span class="title ml-3 mr-5 white--text">영화 추천 서비스</span>
             <v-spacer />
 
-             <a @click=goTo_signup() style="color: white;"> SignUp</a>
+            
 
         </v-app-bar>
 
@@ -63,6 +63,11 @@ export default {
             },
             {
                 icon: "mdi-movie",
+                text: "영화 평점 등록",
+                path: "give-rating"
+            },
+            {
+                icon: "mdi-movie",
                 text: "관리자 데이터 변경",
                 path: "admin-data"
             },
@@ -75,9 +80,6 @@ export default {
     methods: {
         goTo: function(path) {
             router.push({ name: path });
-        },
-        goTo_signup: function() {
-            router.push({ name: "signup"});
         }
     }
 };

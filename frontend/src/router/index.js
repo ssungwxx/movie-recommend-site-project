@@ -5,8 +5,7 @@ import MovieSearchPage from "../components/pages/MovieSearchPage";
 import ProfileSearchPage from "../components/pages/ProfileSearchPage";
 import AdminDataPage from "../components/pages/AdminDataPage";
 import ClassifySearchPage from "../components/pages/ClassifySearchPage";
-import SignUpPage from "../components/pages/SignUpPage";
-
+import GiveRatingPage from "../components/pages/GiveRatingPage";
 
 Vue.use(VueRouter);
 
@@ -35,9 +34,9 @@ const router = new VueRouter({
             name: "classify-search"
         },
         {
-            path: "/signup",
-            component: SignUpPage,
-            name: "signup"
+            path: "/giverating",
+            component: GiveRatingPage,
+            name: "give-rating"
         }
     ],
     scrollBehavior() {

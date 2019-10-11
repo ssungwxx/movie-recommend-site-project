@@ -38,8 +38,10 @@ export default {
   classifyingMovies(params) {
     return axios.get(`${apiUrl}/classify/`, { params });
   },
-  signup(params){
-        console.log(params)
-        return axios.post(`${apiUrl}/auth/signup-many/`,params);
+  giverating(params) {
+    return axios.post(`${apiUrl}/ratings/`, { params });
+  },
+  updaterating(data){
+    return axios.put(`${apiUrl}/ratings`,data);
   }
 };
