@@ -30,7 +30,7 @@ export default {
                 };
             }
 
-            if (!params == "") this.submit(params);
+            if (!params == "") this.submit(params-1);
         }
     }
 };
