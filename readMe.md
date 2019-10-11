@@ -61,10 +61,6 @@ python parse_data.py
 "문서 : readMe 파일 수정"
 ```
 
-### Clustering 공부
-
-현재 진행중
-
 ### 역활 담당
 
 -   기획 담당 : 지창규
