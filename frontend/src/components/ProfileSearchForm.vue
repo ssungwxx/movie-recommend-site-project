@@ -26,7 +26,7 @@ export default {
             let params = "";
             if (this.searchDivision == "ID") {
                 params = {
-                    id: this.param-1
+                    id: this.param+1
                 };
             }
 
