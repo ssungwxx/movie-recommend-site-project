@@ -108,7 +108,7 @@ export default {
             buyer_addr: '서울특별시 강남구 삼성동',
             buyer_postcode: '123-456'
             }, (result_success) => {
-            //성공할 때 실행 될 콜백 함수
+            //성공할 때 실행 될 콜백 함수  추가
             var msg = '결제가 완료되었습니다.';
             msg += '고유ID : ' + result_success.imp_uid;
             msg += '상점 거래ID : ' + result_success.merchant_uid;
