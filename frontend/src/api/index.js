@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const apiUrl = "http://127.0.0.1:8000/api";
-// const apiUrl = "http://52.79.111.26:8000/api";
+//const apiUrl = "http://127.0.0.1:8000/api";
+ const apiUrl = "http://52.79.111.26:8000/api";
 
 export default {
   searchMovies(params) {
@@ -38,6 +38,7 @@ export default {
   classifyingMovies(params) {
     return axios.get(`${apiUrl}/classify/`, { params });
   },
+
   userbased_recommendMovies(params) {
     return axios.get(`${apiUrl}/userbased`, { params });
   },
