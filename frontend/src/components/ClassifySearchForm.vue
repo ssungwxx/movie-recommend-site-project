@@ -76,9 +76,15 @@ export default {
           gender: this.genderDivision
         };
       } else if (this.select == "age") {
-        params = {
-          age: this.ageDivision.slice(0, 2)
-        };
+        if (this.ageDivision == "10대 미만") {
+          parmas = {
+            age: 0
+          };
+        } else {
+          params = {
+            age: this.ageDivision.slice(0, 2)
+          };
+        }
       } else if (this.select == "job") {
         parmas = {
           occupation: this.jobItems.indexOf(this.jobDivision)

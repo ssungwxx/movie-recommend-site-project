@@ -1,4 +1,5 @@
 <template>
+
   <v-app id="app">
     <v-app-bar app clipped-left color="#808080">
       <v-app-bar-nav-icon class="white--text" @click="drawer = !drawer" />
@@ -18,7 +19,7 @@
       </div>
     </v-app-bar>
 
-
+  
     <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4">
       <v-list dense class="grey lighten-4">
         <template v-for="(choice, i) in choices">
@@ -78,6 +79,11 @@ export default {
                 icon: "mdi-movie",
                 text: "유저 검색",
                 path: "profile-search"
+            },
+            {
+                icon: "mdi-movie",
+                text: "영화 평점 등록",
+                path: "give-rating"
             },
             {
                 icon: "mdi-movie",

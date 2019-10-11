@@ -6,7 +6,7 @@ const state = {
   movieSearchList: [],
   // For Admin Data
   AllMovieList: [],
-  AllProfileList: [],
+  profileSearchList: [],
   AllRatingList: [],
   classifiedList: [],
   isLogin: false,
@@ -66,19 +66,7 @@ const actions = {
 
     commit("setAllMoviesData", movies);
   },
-  async getAllProfiles({ commit }, params) {
-    const resp = await api.serachProfiles(params);
-    const profiles = resp.data.map(d => ({
-      id: d.id,
-      username: d.username,
-      is_staff: d.is_staff,
-      gender: d.gender,
-      age: d.age,
-      occupation: d.occupation
-    }));
-
-    commit("setAllProfilesData", profiles);
-  },
+  
   async getAllRatings({ commit }, params) {
     const resp = await api.searchRatings(params);
     const ratings = resp.data.map(d => ({
@@ -187,8 +175,8 @@ const mutations = {
 
     state.movieSearchList = movieData;
   },
-  setAllProfilesData(state, profiles) {
-    state.AllProfileList = profiles.map(m => m);
+  setProfileSearchList(state, profiles) {
+        state.profileSearchList = profiles.map(m => m);
   },
   setAllMoviesData(state, movies) {
     state.AllMovieList = movies.map(m => m);
