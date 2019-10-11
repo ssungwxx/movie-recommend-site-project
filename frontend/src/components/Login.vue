@@ -62,14 +62,8 @@ export default {
   methods: {
     ...mapActions("data", ["Login"]),
     async submit() {
-      console.log("dd");
-
       if (this.$refs.form.validate()) {
-        console.log("ddd");
-        console.log(this.data);
-
         await this.Login(this.data);
-        console.log("ddddd");
 
         this.dialog = false;
       }

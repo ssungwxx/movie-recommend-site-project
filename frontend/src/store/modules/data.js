@@ -108,15 +108,8 @@ const actions = {
     if (sessionStorage.getItem("user")) {
       commit("setisLogin", true);
     } else {
-      console.log(params);
-
       const resp = await api.login(params);
       if (resp.status == 200) {
-        console.log("dsds");
-        console.log(resp.data);
-
-        console.log(resp.status);
-
         sessionStorage.setItem("user", resp.user);
         alert("Login!");
         const user = resp.user;
@@ -198,8 +191,6 @@ const mutations = {
   },
   setClassifiedMovies(state, movies) {
     state.classifiedList = movies.map(m => m);
-    console.log(state.classifiedList.length);
-    console.log("setter");
   },
   setisLogin(state, isLogin) {
     state.isLogin = isLogin;
