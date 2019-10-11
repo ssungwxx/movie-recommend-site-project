@@ -21,7 +21,6 @@ python manage.py runserver
 ```
 cd frontend
 npm install
-npm install -g yarn
 npm install -g @vue/cli
 npm install vue
 npm runserve
