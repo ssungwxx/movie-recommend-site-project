@@ -26,13 +26,6 @@ npm install vue
 npm runserve
 ```
 
-### Dataparsing 저장
-
-```
-cd data
-python parse_data.py
-```
-
 ### Branch 설명
 
 -   master : 최종 완료 시 업로드
