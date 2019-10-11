@@ -26,11 +26,11 @@ export default {
             let params = "";
             if (this.searchDivision == "ID") {
                 params = {
-                    id: this.param
+                    id: this.param-1
                 };
             }
 
-            if (!params == "") this.submit(params-1);
+            if (!params == "") this.submit(params);
         }
     }
 };
