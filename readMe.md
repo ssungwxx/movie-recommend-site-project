@@ -65,7 +65,7 @@ python parse_data.py
 
 
 명세서 확인하기
-=======
+
 ### Clustering 공부
 
 현재 진행중
@@ -75,4 +75,4 @@ python parse_data.py
 -   기획 담당 : 지창규
 -   QA 담당 : 임성우, 김성우
 -   코드리뷰 담당 : 신승민
->>>>>>> 22fdffa1f019a0f6a12455f4113a07339c4563d2
+
